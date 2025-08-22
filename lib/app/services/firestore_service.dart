@@ -1,0 +1,1 @@
+// Logic tương tác Firestore
