@@ -1,1 +1,1 @@
-// Logic tương tác Firestore
+// Logic tương tác Firestore (Firestore operations)
