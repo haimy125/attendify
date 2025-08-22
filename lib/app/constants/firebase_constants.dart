@@ -1,42 +1,29 @@
-// Firebase collections
 class FirebaseConstants {
-  // Collections
+  // Collection names
   static const String usersCollection = 'users';
   static const String classesCollection = 'classes';
   static const String enrollmentsCollection = 'enrollments';
   static const String sessionsCollection = 'sessions';
   static const String attendanceRecordsCollection = 'attendance_records';
 
-  // User Fields
-  static const String userEmail = 'email';
-  static const String userFullName = 'fullName';
-  static const String userRole = 'role';
-  static const String userStudentId = 'studentId';
+  // User roles
+  static const String studentRole = 'student';
+  static const String lecturerRole = 'lecturer';
 
-  // Class Fields
-  static const String className = 'className';
-  static const String classCode = 'classCode';
-  static const String classDescription = 'description';
-  static const String classLecturerId = 'lecturerId';
+  // Attendance status
+  static const String presentStatus = 'present';
+  static const String absentStatus = 'absent';
+  static const String lateStatus = 'late';
 
-  // Session Fields
-  static const String sessionClassId = 'classId';
-  static const String sessionCreatedAt = 'createdAt';
-  static const String sessionLecturerLocation = 'lecturerLocation';
-  static const String sessionActiveToken = 'activeToken';
-  static const String sessionTokenExpiry = 'tokenExpiry';
-  static const String sessionIsOpen = 'isOpen';
+  // Session settings
+  static const int defaultMaxDistance = 50; // meters
+  static const int tokenExpiryMinutes = 5;
+  static const int qrCodeRefreshSeconds = 30;
 
-  // Attendance Records Fields
-  static const String attendanceSessionId = 'sessionId';
-  static const String attendanceStudentUid = 'studentUid';
-  static const String attendanceCheckinTime = 'checkinTime';
-  static const String attendanceStatus = 'status';
-  static const String attendanceScannedLocation = 'scannedLocation';
-  static const String attendanceScannedDeviceId = 'scannedDeviceId';
-
-  // Enrollment Fields
-  static const String enrollmentClassId = 'classId';
-  static const String enrollmentStudentUid = 'studentUid';
-  static const String enrollmentRegisteredDeviceId = 'registeredDeviceId';
+  // Validation constants
+  static const int minPasswordLength = 6;
+  static const int minFullNameLength = 2;
+  static const int minStudentIdLength = 3;
+  static const int maxClassCodeLength = 10;
+  static const int maxClassNameLength = 100;
 }
