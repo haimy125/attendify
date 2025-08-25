@@ -1,3 +1,4 @@
+import 'package:attendify_app/features/authentication/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../../features/authentication/screens/login_screen.dart';
 import '../../features/authentication/screens/register_screen.dart';
@@ -14,7 +15,7 @@ class RouteConfig {
   static const String studentDashboard = '/student-dashboard';
 
   static Map<String, WidgetBuilder> get routes => {
-    splash: (context) => const LoginScreen(), // Temporary
+    splash: (context) => const SplashScreen(), // Temporary
     login: (context) => const LoginScreen(),
     register: (context) => const RegisterScreen(),
     forgotPassword: (context) => const ForgotPasswordScreen(),
