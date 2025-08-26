@@ -2,6 +2,7 @@ import 'package:attendify_app/app/config/route_config.dart';
 import 'package:attendify_app/app/services/auth_service.dart';
 import 'package:attendify_app/features/attendance/screens/student/attendance_history_screen.dart';
 import 'package:attendify_app/features/attendance/screens/student/qr_scanner_screen.dart';
+import 'package:attendify_app/features/classes/screens/student_screens/student_class_list_screen.dart';
 import 'package:attendify_app/features/classes/screens/student_screens/student_join_class_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -38,7 +39,7 @@ class StudentDashboard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => const StudentJoinClassScreen(),
+                  builder: (_) => const StudentClassListScreen(),
                 ),
               );
             },

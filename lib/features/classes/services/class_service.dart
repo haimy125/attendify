@@ -1,3 +1,4 @@
+import 'package:attendify_app/features/classes/models/student_class_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/class_model.dart';
 import '../models/enrollment_model.dart';
@@ -89,5 +90,43 @@ class ClassService {
     await _firestore.collection('classes').doc(classId).update({
       'students': FieldValue.arrayUnion([studentUid]),
     });
+  }
+
+  /// Lấy danh sách lớp mà sinh viên đã tham gia (hợp nhất từ enrollments + classes)
+  Stream<List<StudentClassModel>> getStudentClasses(String studentUid) {
+    return _firestore
+        .collection('enrollments')
+        .where('studentUid', isEqualTo: studentUid)
+        .snapshots()
+        .asyncMap((snapshot) async {
+          List<StudentClassModel> result = [];
+
+          for (var doc in snapshot.docs) {
+            final enrollment = EnrollmentModel.fromFirestore(doc);
+
+            // lấy class tương ứng
+            final classDoc = await _firestore
+                .collection('classes')
+                .doc(enrollment.classId)
+                .get();
+
+            if (classDoc.exists) {
+              final classData = ClassModel.fromFirestore(classDoc);
+
+              result.add(
+                StudentClassModel(
+                  enrollmentId: enrollment.id,
+                  classId: classData.id,
+                  name: classData.name,
+                  code: classData.code,
+                  schedule: classData.schedule,
+                  joinedAt: enrollment.joinedAt,
+                ),
+              );
+            }
+          }
+
+          return result;
+        });
   }
 }

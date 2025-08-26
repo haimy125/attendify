@@ -29,6 +29,13 @@
             {
               "client_id": "827133554416-7or804b8niigvmepbbggkfv3il87glp8.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "827133554416-82hetrv8osje1o1k0f7cbrie3bs7ptiu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.attendifyApp"
+              }
             }
           ]
         }
