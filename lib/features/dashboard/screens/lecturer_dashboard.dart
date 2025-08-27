@@ -8,8 +8,13 @@ class LecturerDashboard extends StatelessWidget {
   const LecturerDashboard({super.key});
 
   Future<void> _logout(BuildContext context) async {
+    // Store the navigator before async operation
+    final navigator = Navigator.of(context);
+
     await AuthService().logout();
-    Navigator.pushReplacementNamed(context, RouteConfig.login);
+
+    // Use the stored navigator after async operation
+    navigator.pushReplacementNamed(RouteConfig.login);
   }
 
   @override
@@ -107,9 +112,9 @@ class LecturerDashboard extends StatelessWidget {
             child: const Text("Hủy"),
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
               Navigator.pop(ctx);
-              _logout(context);
+              await _logout(context);
             },
             child: const Text("Đăng xuất"),
           ),

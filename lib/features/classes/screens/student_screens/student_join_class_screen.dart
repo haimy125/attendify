@@ -28,18 +28,23 @@ class _StudentJoinClassScreenState extends State<StudentJoinClassScreen> {
         studentUid,
       );
 
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Tham gia lớp thành công")),
-        );
-        Navigator.pop(context);
-      }
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Tham gia lớp thành công")));
+      Navigator.pop(context);
     } catch (e) {
+      if (!mounted) return;
+
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(SnackBar(content: Text("Lỗi: $e")));
     } finally {
-      setState(() => _loading = false);
+      if (mounted) {
+        // Thêm kiểm tra mounted
+        setState(() => _loading = false);
+      }
     }
   }
 
